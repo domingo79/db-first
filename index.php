@@ -2,18 +2,19 @@
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpassword = 'root';
-$dbdatabase = 'ijdb';
+$dbdatabase = 'dbcar';
 
 
 try {
-    $pdo = new PDO(`mysql:host={$dbhost};dbname={$dbdatabase},{$dbuser},{$dbpassword}`);
+    $pdo = new PDO("mysql:host=$dbhost;dbname=$dbdatabase,$dbuser,$dbpassword");
 
     $output = 'Database connect established.';
 } catch (PDOException $e) {
 
     $output = 'Unable to connect to the database: ' . $e->getMessage() . $e->getLine();
 }
-
+var_dump($pdo);
+$pdo = null;
 
 ?>
 <!DOCTYPE html>
