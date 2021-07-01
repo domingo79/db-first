@@ -1,19 +1,25 @@
 <?php
+
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpassword = 'root';
-$dbdatabase = `dbcar`;
+$dbdatabase = `ijdb`;
 
 try {
-    $pdo = new PDO("mysql:host=$dbhost;dbname=$dbdatabase;$dbuser,$dbpassword");
-
+    $pdo = new PDO(
+        "mysql:host=$dbhost;dbname=$dbdatabase",
+        $dbuser,
+        $dbpassword
+    );
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $output = 'Database connect established.';
 } catch (PDOException $e) {
 
-    $output = 'Unable to connect to the database: ' . $e->getMessage() . $e->getLine();
+    $output = 'Unable to connect to the database: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine();
 }
-var_dump($pdo);
+// var_dump($pdo);
 $pdo = null;
+
 
 ?>
 <!DOCTYPE html>
