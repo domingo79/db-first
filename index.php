@@ -2,11 +2,10 @@
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpassword = 'root';
-$dbdatabase = 'dbcar';
-
+$dbdatabase = `dbcar`;
 
 try {
-    $pdo = new PDO("mysql:host=$dbhost;dbname=$dbdatabase,$dbuser,$dbpassword");
+    $pdo = new PDO("mysql:host=$dbhost;dbname=$dbdatabase;$dbuser,$dbpassword");
 
     $output = 'Database connect established.';
 } catch (PDOException $e) {
